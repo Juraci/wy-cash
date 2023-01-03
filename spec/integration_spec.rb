@@ -4,12 +4,9 @@ require "dollar"
 RSpec.describe "Integration specs" do
   it "multiplies a given amount" do
     five = Dollar.new(amount: 5)
-    product = five.times(2)
 
-    expect(product.amount).to eq 10
-
-    product_b = five.times(3)
-    expect(product_b.amount).to eq 15
+    expect(five.times(2)).to be_equals(Dollar.new(amount: 10))
+    expect(five.times(3)).to be_equals(Dollar.new(amount:15))
   end
 
   describe "#Dollar.equals" do
