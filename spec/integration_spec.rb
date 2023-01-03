@@ -6,7 +6,7 @@ RSpec.describe "Integration specs" do
     five = Dollar.new(amount: 5)
 
     expect(five.times(2)).to be_equals(Dollar.new(amount: 10))
-    expect(five.times(3)).to be_equals(Dollar.new(amount:15))
+    expect(five.times(3)).to be_equals(Dollar.new(amount: 15))
   end
 
   describe "#Dollar.equals" do
