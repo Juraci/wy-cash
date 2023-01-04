@@ -34,4 +34,11 @@ RSpec.describe "Integration specs" do
       expect(Money.dollar(amount: 5)).to_not be_equals(Money.franc(amount: 5))
     end
   end
+
+  describe ".currency" do
+    it "returns its currency" do
+      expect(Money.dollar(amount: 1).currency).to eq "USD"
+      expect(Money.franc(amount: 1).currency).to eq "CHF"
+    end
+  end
 end

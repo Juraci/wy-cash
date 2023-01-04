@@ -1,12 +1,9 @@
 class Money
-  attr_accessor :amount
+  attr_accessor :amount, :currency
 
-  def initialize(amount:)
+  def initialize(amount:, currency:)
     @amount = amount
-  end
-
-  def times(multiplier)
-    self.class.new(amount: @amount * multiplier)
+    @currency = currency
   end
 
   def equals?(comparison)
@@ -15,10 +12,10 @@ class Money
   end
 
   def self.dollar(amount:)
-    Dollar.new(amount: amount)
+    Dollar.new(amount: amount, currency: "USD")
   end
 
   def self.franc(amount:)
-    Franc.new(amount: amount)
+    Franc.new(amount: amount, currency: "CHF")
   end
 end
