@@ -10,6 +10,7 @@ class Money
   end
 
   def equals?(comparison)
-    @amount == comparison.amount
+    @amount == comparison.amount &&
+      self.class == comparison.class
   end
 end

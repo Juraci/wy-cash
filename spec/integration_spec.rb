@@ -13,11 +13,11 @@ RSpec.describe "Integration specs" do
   it "multiplies a given amount" do
     five = Franc.new(amount: 5)
 
-    expect(five.times(2)).to be_equals(Dollar.new(amount: 10))
-    expect(five.times(3)).to be_equals(Dollar.new(amount: 15))
+    expect(five.times(2)).to be_equals(Franc.new(amount: 10))
+    expect(five.times(3)).to be_equals(Franc.new(amount: 15))
   end
 
-  describe "#Dollar.equals" do
+  describe ".equals" do
     it "returns true when the amount is the same" do
       five = Dollar.new(amount: 5)
 
@@ -28,6 +28,10 @@ RSpec.describe "Integration specs" do
       five = Dollar.new(amount: 5)
 
       expect(five).to_not be_equals(Dollar.new(amount: 6))
+    end
+
+    it "returns false when comparing two different currencies" do
+      expect(Dollar.new(amount: 5)).to_not be_equals(Franc.new(amount: 5))
     end
   end
 end
