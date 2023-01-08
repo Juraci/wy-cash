@@ -1,6 +1,7 @@
 require "spec_helper"
 require "dollar"
 require "franc"
+require "money"
 
 RSpec.describe "Integration specs" do
   it "multiplies a given amount" do

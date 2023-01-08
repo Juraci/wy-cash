@@ -8,14 +8,18 @@ class Money
 
   def equals?(comparison)
     @amount == comparison.amount &&
-      self.class == comparison.class
+      @currency == comparison.currency
+  end
+
+  def times(multiplier)
+    Money.new(amount: @amount * multiplier, currency: currency)
   end
 
   def self.dollar(amount:)
-    Dollar.new(amount: amount, currency: "USD")
+    Money.new(amount: amount, currency: "USD")
   end
 
   def self.franc(amount:)
-    Franc.new(amount: amount, currency: "CHF")
+    Money.new(amount: amount, currency: "CHF")
   end
 end
