@@ -1,3 +1,4 @@
+require "sum"
 class Money
   attr_accessor :amount, :currency
 
@@ -13,6 +14,14 @@ class Money
 
   def times(multiplier)
     Money.new(amount: @amount * multiplier, currency: currency)
+  end
+
+  def reduce(to)
+    self
+  end
+
+  def plus(addend)
+    Sum.new(self, addend)
   end
 
   def self.dollar(amount:)
