@@ -16,8 +16,9 @@ class Money
     Money.new(amount: @amount * multiplier, currency: currency)
   end
 
-  def reduce(to)
-    self
+  def reduce(bank: nil, to:)
+    rate = bank.rate(from: @currency, to: to)
+    Money.new(amount: @amount / rate, currency: to)
   end
 
   def plus(addend)

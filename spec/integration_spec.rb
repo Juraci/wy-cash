@@ -3,14 +3,14 @@ require "bank"
 require "money"
 
 RSpec.describe "Integration specs" do
-  it 'multiplies a given amount' do
+  it 'multiplies a given amount in dollar' do
     five = Money.dollar(amount: 5)
 
     expect(five.times(2)).to be_equals(Money.dollar(amount: 10))
     expect(five.times(3)).to be_equals(Money.dollar(amount: 15))
   end
 
-  it 'multiplies a given amount' do
+  it 'multiplies a given amount in franc' do
     five = Money.franc(amount: 5)
 
     expect(five.times(2)).to be_equals(Money.franc(amount: 10))
@@ -35,6 +35,14 @@ RSpec.describe "Integration specs" do
   it 'reduces money' do
     bank = Bank.new
     result = bank.reduce(source: Money.dollar(amount: 1), to: "USD")
+    expect(result).to be_equals(Money.dollar(amount: 1))
+  end
+
+  it 'reduces money to a different currency' do
+    bank = Bank.new
+    bank.add_rate('CHF', 'USD', 2)
+    result = bank.reduce(source: Money.franc(amount: 2), to: 'USD')
+
     expect(result).to be_equals(Money.dollar(amount: 1))
   end
   
