@@ -9,7 +9,10 @@ class Sum
   end
 
   def reduce(bank: nil, to:)
-    amount = augend.amount + addend.amount
+    amount = augend.reduce(bank: bank, to: to).amount + addend.reduce(bank: bank, to: to).amount
     Money.new(amount: amount, currency: to)
+  end
+
+  def plus(addend)
   end
 end

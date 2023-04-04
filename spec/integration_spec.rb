@@ -66,4 +66,15 @@ RSpec.describe "Integration specs" do
     expect(Money.dollar(amount: 1).currency).to eq 'USD'
     expect(Money.franc(amount: 1).currency).to eq 'CHF'
   end
+
+  it 'adds mixed currencies' do
+    five_dollars = Money.dollar(amount: 5)
+    ten_francs = Money.franc(amount: 10)
+
+    bank = Bank.new
+    bank.add_rate('CHF', 'USD', 2)
+
+    result = bank.reduce(source: five_dollars.plus(ten_francs), to: 'USD')
+    expect(Money.dollar(amount: 10)).to be_equals(result)
+  end
 end
